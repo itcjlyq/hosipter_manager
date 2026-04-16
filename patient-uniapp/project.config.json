@@ -1,0 +1,25 @@
+{
+  "description": "miniprogramRoot 须与编译方式一致：HBuilderX「运行」→ unpackage/dist/dev/mp-weixin/；npm run build:mp-weixin → 可改为 dist/build/mp-weixin/ 或直接导入 dist/build/mp-weixin；npm run dev:mp-weixin → dist/dev/mp-weixin。若出现 Component is not found，多为产物目录过期或未重新编译。",
+  "miniprogramRoot": "unpackage/dist/dev/mp-weixin/",
+  "compileType": "miniprogram",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": false,
+    "minified": false,
+    "newFeature": true,
+    "bigPackageSizeSupport": true,
+    "minifyWXML": true
+  },
+  "appid": "wx1e579f00a4965f48",
+  "projectname": "patient-uniapp",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

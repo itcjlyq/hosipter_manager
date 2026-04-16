@@ -1,0 +1,130 @@
+### 变量：改端口时只改这里
+@baseUrl = http://localhost:8080
+### 登录后把 data.accessToken 贴到下面（或各 IDE REST 客户端里填环境变量）
+@token = 在此粘贴JWT
+
+### 健康检查（无需登录）
+GET {{baseUrl}}/api/health
+GET {{baseUrl}}/health
+
+### 密码登录（管理员示例：与 application.yml 里 app.bootstrap.admin 一致，首次启动会自动建）
+POST {{baseUrl}}/api/auth/login/password
+Content-Type: application/json
+
+{
+  "phone": "13800000000",
+  "password": "admin123456"
+}
+
+### 需登录：探测 JWT 是否生效（任意已登录角色）
+GET {{baseUrl}}/api/secure/ping
+Authorization: Bearer {{token}}
+
+### ========== 患者端（需 PATIENT 的 token）==========
+### 当前登录患者资料（姓名、脱敏手机、年龄等）
+GET {{baseUrl}}/api/patient/me
+Authorization: Bearer {{token}}
+
+### 可选医生列表（绑定页）
+GET {{baseUrl}}/api/patient/doctors
+Authorization: Bearer {{token}}
+
+### 申请绑定某医生（doctorUserId = 医生在 sys_user 的 id）
+POST {{baseUrl}}/api/patient/binds
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "doctorUserId": 2
+}
+
+### 我的绑定列表
+GET {{baseUrl}}/api/patient/binds
+Authorization: Bearer {{token}}
+
+### 取消待审核申请
+DELETE {{baseUrl}}/api/patient/binds/1
+Authorization: Bearer {{token}}
+
+### 患者：我的附件列表
+GET {{baseUrl}}/api/patient/files
+Authorization: Bearer {{token}}
+
+### 患者：上传附件（multipart；REST Client 需本地文件路径，也可用 Postman 选文件）
+### 可选字段 bizType：attachment / report / image 等小写+下划线，默认 attachment
+POST {{baseUrl}}/api/patient/files
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----devboundary
+
+------devboundary
+Content-Disposition: form-data; name="file"; filename="demo.txt"
+Content-Type: text/plain
+
+< ./demo.txt
+------devboundary
+Content-Disposition: form-data; name="bizType"
+
+report
+------devboundary--
+
+### 患者：下载附件（返回二进制流，非 JSON）
+GET {{baseUrl}}/api/patient/files/1/download
+Authorization: Bearer {{token}}
+
+### 患者：删除附件（软删）
+DELETE {{baseUrl}}/api/patient/files/1
+Authorization: Bearer {{token}}
+
+### ========== 医生端（需 DOCTOR 的 token）==========
+### 绑定列表（可选 ?status=pending|approved|rejected）
+GET {{baseUrl}}/api/doctor/binds?status=pending
+Authorization: Bearer {{token}}
+
+### 邀请患者绑定（patientUserId = 患者在 sys_user 的 id）
+POST {{baseUrl}}/api/doctor/binds/invite
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "patientUserId": 3
+}
+
+### 通过 / 拒绝（bindId 为 doctor_patient_bind.id）
+POST {{baseUrl}}/api/doctor/binds/1/approve
+Authorization: Bearer {{token}}
+
+###
+POST {{baseUrl}}/api/doctor/binds/1/reject
+Authorization: Bearer {{token}}
+
+### 医生：某患者的附件列表（需已与该患者绑定且审核通过）
+GET {{baseUrl}}/api/doctor/files?patientUserId=3
+Authorization: Bearer {{token}}
+
+### 医生：为患者上传（multipart + patientUserId）
+POST {{baseUrl}}/api/doctor/files
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----devboundary2
+
+------devboundary2
+Content-Disposition: form-data; name="patientUserId"
+
+3
+------devboundary2
+Content-Disposition: form-data; name="file"; filename="note.txt"
+Content-Type: text/plain
+
+< ./demo.txt
+------devboundary2--
+
+### 医生：下载患者附件
+GET {{baseUrl}}/api/doctor/files/1/download
+Authorization: Bearer {{token}}
+
+### 医生：删除患者附件（软删）
+DELETE {{baseUrl}}/api/doctor/files/1
+Authorization: Bearer {{token}}
+
+### ========== 管理端（需 ADMIN 的 token）==========
+GET {{baseUrl}}/api/admin/binds?status=pending
+Authorization: Bearer {{token}}

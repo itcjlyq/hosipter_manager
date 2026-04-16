@@ -1,0 +1,112 @@
+{
+  "pages": [
+    {
+      "path": "pages/gate/gate",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/login/patient-login",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/login/doctor-login",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/patient/bind-doctor",
+      "style": {
+        "navigationBarTitleText": "绑定医生",
+        "navigationBarBackgroundColor": "#f5f7fa",
+        "enablePullDownRefresh": true,
+        "backgroundTextStyle": "dark"
+      }
+    },
+    {
+      "path": "pages/patient/archives",
+      "style": {
+        "navigationBarTitleText": "我的诊断档案",
+        "navigationBarBackgroundColor": "#f4f9f9",
+        "enablePullDownRefresh": true,
+        "backgroundTextStyle": "dark"
+      }
+    },
+    {
+      "path": "pages/doctor/home",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/doctor/my-patients",
+      "style": {
+        "navigationBarTitleText": "患者管理",
+        "navigationBarBackgroundColor": "#f5f7fa"
+      }
+    },
+    {
+      "path": "pages/doctor/chat",
+      "style": {
+        "navigationBarTitleText": "在线咨询",
+        "navigationBarBackgroundColor": "#eef2f7"
+      }
+    },
+    {
+      "path": "pages/doctor/records",
+      "style": {
+        "navigationBarTitleText": "历史诊断记录",
+        "navigationBarBackgroundColor": "#f5f7fa"
+      }
+    },
+    {
+      "path": "pages/upload/upload",
+      "style": {
+        "navigationBarTitleText": "上传诊断档案",
+        "navigationBarBackgroundColor": "#f4f9f9"
+      }
+    },
+    {
+      "path": "pages/chat/chat",
+      "style": {
+        "navigationBarTitleText": "在线咨询",
+        "navigationBarBackgroundColor": "#eef2f7"
+      }
+    },
+    {
+      "path": "pages/records/records",
+      "style": {
+        "navigationBarTitleText": "历史诊断记录",
+        "navigationBarBackgroundColor": "#f5f7fa"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "navigationBarBackgroundColor": "#f5f7fa"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "医院服务",
+    "navigationBarBackgroundColor": "#f5f7fa",
+    "backgroundColor": "#f5f7fa"
+  }
+}

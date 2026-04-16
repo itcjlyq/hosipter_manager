@@ -1,0 +1,36 @@
+/* 清新亮丽：浅底 + 薄荷青强调 */
+:root {
+  --admin-bg: #f0fdf9;
+  --admin-card: #ffffff;
+  --admin-primary: #14b8a6;
+  --admin-primary-dark: #0d9488;
+  --admin-text: #0f172a;
+  --admin-muted: #64748b;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(160deg, #ecfdf5 0%, #f8fafc 45%, #f1f5f9 100%);
+  color: var(--admin-text);
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* Element Plus 主色：薄荷青 */
+:root {
+  --el-color-primary: #14b8a6;
+  --el-color-primary-light-3: #5eead4;
+  --el-color-primary-light-5: #99f6e4;
+  --el-color-primary-light-7: #ccfbf1;
+  --el-color-primary-light-9: #f0fdfa;
+  --el-color-primary-dark-2: #0f766e;
+}
+
+.admin-shell {
+  min-height: 100vh;
+}
